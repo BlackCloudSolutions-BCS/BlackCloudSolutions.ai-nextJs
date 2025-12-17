@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+Arabic:wght@100..900&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-gold: #D7BC6D;
+  --color-gold-light: #E6D7A2;
+  --color-gold-dark: #CBA344;
+  --font-inter: 'Inter', sans-serif;
+  --font-arabic: 'Noto Sans Arabic', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+}
+
+.arabic-text {
+  font-family: 'Noto Sans Arabic', sans-serif;
+}

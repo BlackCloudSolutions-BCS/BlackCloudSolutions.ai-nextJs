@@ -1,0 +1,214 @@
+import Link from 'next/link';
+
+export default function Home() {
+  return (
+    <div>
+      {/* Hero Section */}
+      <section className="relative w-full min-h-screen pb-32">
+        <div className="absolute inset-0 w-full h-screen overflow-hidden">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/assets/landing.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        </div>
+
+        <div className="relative isolate px-6 pt-14 lg:px-12">
+          <div className="mx-auto max-w-6xl py-32 sm:py-48 lg:pt-50 lg:pb-32">
+            <div className="hidden sm:mb-8 sm:flex sm:justify-center">
+              <div className="relative rounded-full px-4 py-2 text-sm text-white bg-[#D7BC6D]/10 backdrop-blur-sm border border-[#D7BC6D]/30 hover:bg-[#D7BC6D]/20 transition-all duration-300">
+                Purpose-Built Legal Intelligence <a href="#" className="font-semibold text-[#D7BC6D]"><span aria-hidden="true" className="absolute inset-0"></span>Read more <span aria-hidden="true">&rarr;</span></a>
+              </div>
+            </div>
+            <div className="text-center">
+              <h1 className="text-4xl font-bold tracking-tight text-balance text-[#D7BC6D] sm:text-6xl lg:text-7xl">
+                <span className="text-white">The Future of Legal Tech</span> <span className="drop-shadow-[0px_0px_39px_rgba(215,188,109,0.9)]">in the UAE</span>
+              </h1>
+              <p className="mt-8 text-lg font-medium text-pretty text-white sm:text-xl lg:text-2xl leading-relaxed">
+                A revolutionary approach to navigating the complex <span className="text-[#D7BC6D]">UAE regulatory landscape</span>, powered by <span className="text-[#D7BC6D]">advanced AI and semantic technology.</span>
+              </p>
+              <div className="mt-10 flex items-center justify-center gap-x-6">
+                <Link href="/app" className="rounded-2xl bg-gradient-to-r from-[#D7BC6D] to-[#CBA344] px-8 py-4 text-base font-semibold text-white shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300 lg:px-10 lg:py-5 lg:text-lg">Get started</Link>
+                <Link href="/features" className="text-base font-semibold text-white hover:text-[#D7BC6D] transition-colors duration-300 lg:text-lg">Learn more <span aria-hidden="true">→</span></Link>
+              </div>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mx-auto max-w-5xl mt-20 pb-20">
+            <div className="text-center bg-black/40 backdrop-blur-md rounded-3xl p-8 border-2 border-[#D7BC6D]/50 hover:bg-black/60 hover:scale-105 hover:border-[#D7BC6D] hover:shadow-[0px_0px_30px_rgba(215,188,109,0.4)] transition-all duration-300 shadow-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-12 text-[#D7BC6D] mx-auto mb-4 drop-shadow-[0px_0px_20px_rgba(215,188,109,0.5)]">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 0 0 2.25-2.25V6.75a2.25 2.25 0 0 0-2.25-2.25H6.75A2.25 2.25 0 0 0 4.5 6.75v10.5a2.25 2.25 0 0 0 2.25 2.25Zm.75-12h9v9h-9v-9Z" />
+              </svg>
+              <h3 className="text-xl font-bold text-[#D7BC6D] mb-2">Domain-Specific AI</h3>
+              <p className="mt-2 text-sm text-gray-300 leading-relaxed">Specialized Algorithms of UAE regulatory</p>
+            </div>
+            <div className="text-center bg-black/40 backdrop-blur-md rounded-3xl p-8 border-2 border-[#D7BC6D]/50 hover:bg-black/60 hover:scale-105 hover:border-[#D7BC6D] hover:shadow-[0px_0px_30px_rgba(215,188,109,0.4)] transition-all duration-300 shadow-lg">
+              <p className="text-[#D7BC6D] mb-4 text-5xl drop-shadow-[0px_0px_20px_rgba(215,188,109,0.5)]">مرحباً</p>
+              <h3 className="text-xl font-bold text-[#D7BC6D] mb-2">Bilingual Understanding</h3>
+              <p className="mt-2 text-sm text-gray-300 leading-relaxed">Seamless Arabic and English legal content</p>
+            </div>
+            <div className="text-center bg-black/40 backdrop-blur-md rounded-3xl p-8 border-2 border-[#D7BC6D]/50 hover:bg-black/60 hover:scale-105 hover:border-[#D7BC6D] hover:shadow-[0px_0px_30px_rgba(215,188,109,0.4)] transition-all duration-300 shadow-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-12 text-[#D7BC6D] mx-auto mb-4 drop-shadow-[0px_0px_20px_rgba(215,188,109,0.5)]">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0 0 12 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 0 1-2.031.352 5.988 5.988 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971Zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 0 1-2.031.352 5.989 5.989 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971Z" />
+              </svg>
+              <h3 className="text-xl font-bold text-[#D7BC6D] mb-2">Semantic By Design</h3>
+              <p className="mt-2 text-sm text-gray-300 leading-relaxed">Nuanced understanding of legal concepts</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Introduction Section */}
+      <div className="text-center bg-gradient-to-br from-[#D7BC6D]/5 to-[#CBA344]/5 backdrop-blur-sm mx-auto max-w-7xl mt-8 border border-[#D7BC6D]/30 p-10 lg:px-16 rounded-3xl py-16 hover:border-[#D7BC6D]/50 transition-all duration-300 shadow-2xl">
+        <h2 className="text-3xl font-bold tracking-tight text-balance text-white sm:text-4xl lg:text-5xl">
+          Black Cloud Solutions presents <span className="sm:text-5xl lg:text-6xl text-[#D7BC6D] drop-shadow-[0px_0px_39px_rgba(215,188,109,0.9)]"> ThakAlذكا</span>
+        </h2>
+        <p className="mt-8 text-base font-light text-gray-300 sm:text-lg lg:text-xl leading-relaxed max-w-5xl mx-auto">
+          Our core product, <span className="text-[#D7BC6D] font-semibold">ThakAlذكا</span>, leverages cutting-edge Generative AI, Semantic Web Technologies, and an expansive legal Knowledge Graph database to deliver comprehensive regulatory intelligence and document generation tools specifically tailored for the UAE market. By creating an intelligent, accessible platform that demystifies the complex legal framework of the Emirates, <span className="text-[#D7BC6D]">we support the country's vision of becoming a global business hub while enhancing its technological sovereignty</span>
+        </p>
+      </div>
+
+      {/* Features 1 */}
+      <div className="overflow-hidden py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-12">
+          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2 items-start">
+            <div className="lg:pt-4 lg:pr-8">
+              <div className="lg:max-w-lg">
+                <h2 className="text-base font-bold text-white mb-2">Introducing <span className="text-[#D7BC6D]">ThakAlذكا</span></h2>
+                <p className="mt-2 text-3xl font-bold tracking-tight text-pretty text-white sm:text-4xl lg:text-5xl leading-tight">Purpose-Built <span className="text-[#D7BC6D] drop-shadow-[0px_0px_30px_rgba(215,188,109,0.7)]">Legal Intelligence</span></p>
+                <p className="mt-6 text-base text-gray-300 lg:text-lg leading-relaxed">
+                  <span className="text-[#D7BC6D]">ThakAlذكا</span> is our sophisticated legal and regulatory AI platform engineered specifically to address the complex challenges of <span className="text-[#D7BC6D]">UAE compliance</span>. By combining advanced modern-day AI with a unique semantic by-design data repository and living documents, we have created a solution that transforms how organizations interact with regulatory frameworks and legal workflows.
+                </p>
+                <dl className="mt-10 max-w-xl space-y-6 text-base text-gray-400 lg:max-w-none">
+                  <div className="relative pl-12 p-4 bg-white/5 backdrop-blur-sm rounded-2xl border border-[#D7BC6D]/20 hover:bg-white/10 hover:border-[#D7BC6D]/40 transition-all duration-300">
+                    <dt className="inline font-bold text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="absolute top-4 left-4 size-6 text-[#D7BC6D] drop-shadow-[0px_0px_10px_rgba(215,188,109,0.5)]">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z" />
+                      </svg>
+                      Workspace
+                    </dt>
+                    <dd className="inline text-gray-300 text-sm"> - Domain and theme-specific workspace configurations for precise control of knowledge and contextual-awareness management, tailored to specific user and organizational needs.</dd>
+                  </div>
+
+                  <div className="relative pl-12 p-4 bg-white/5 backdrop-blur-sm rounded-2xl border border-[#D7BC6D]/20 hover:bg-white/10 hover:border-[#D7BC6D]/40 transition-all duration-300">
+                    <dt className="inline font-bold text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="absolute top-4 left-4 size-6 text-[#D7BC6D] drop-shadow-[0px_0px_10px_rgba(215,188,109,0.5)]">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
+                      </svg>
+                      Real-Time News Feed
+                    </dt>
+                    <dd className="inline text-gray-300 text-sm"> - A continuously updated stream of relevant regional legal and regulatory related news, keeping users informed of the latest developments across the UAE legal landscape.</dd>
+                  </div>
+
+                  <div className="relative pl-12 p-4 bg-white/5 backdrop-blur-sm rounded-2xl border border-[#D7BC6D]/20 hover:bg-white/10 hover:border-[#D7BC6D]/40 transition-all duration-300">
+                    <dt className="inline font-bold text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="absolute top-4 left-4 size-6 text-[#D7BC6D] drop-shadow-[0px_0px_10px_rgba(215,188,109,0.5)]">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25M9 16.5v.75m3-3v3M15 12v5.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                      </svg>
+                      Automated Document Drafting
+                    </dt>
+                    <dd className="inline text-gray-300 text-sm"> - Generate draft outlines for corporate policy documents, terms of service agreements, and contracts</dd>
+                  </div>
+
+                  <div className="relative pl-12 p-4 bg-white/5 backdrop-blur-sm rounded-2xl border border-[#D7BC6D]/20 hover:bg-white/10 hover:border-[#D7BC6D]/40 transition-all duration-300">
+                    <dt className="inline font-bold text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="absolute top-4 left-4 size-6 text-[#D7BC6D] drop-shadow-[0px_0px_10px_rgba(215,188,109,0.5)]">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75" />
+                      </svg>
+                      Compliance Monitor
+                    </dt>
+                    <dd className="inline text-gray-300 text-sm"> - Get instant alerts, risk insights, and tailored recommendations so you can close compliance gaps before they become liabilities.</dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+            <div className="h-full">
+              <img src="/assets/Login.png" alt="Product screenshot" className="w-[140%] h-full max-w-none rounded-2xl shadow-[0px_0px_40px_rgba(215,188,109,0.4)] border border-[#D7BC6D]/50 hover:shadow-[0px_0px_60px_rgba(215,188,109,0.6)] transition-all duration-500 object-cover" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Industries Section */}
+      <div className="mx-auto max-w-7xl px-6 lg:px-12 py-24 sm:py-32">
+        <div className="lg:pt-4 lg:pr-8">
+          <div className="text-center">
+            <p className="relative mt-2 text-3xl font-bold tracking-tight text-pretty text-white sm:text-4xl lg:text-5xl leading-tight">
+              Industry<span className="text-[#D7BC6D] drop-shadow-[0px_0px_39px_rgba(215,188,109,0.9)]"> Applications</span>
+            </p>
+            <p className="relative mt-6 text-base text-gray-300 lg:text-lg max-w-3xl mx-auto leading-relaxed">
+              <span className="text-[#D7BC6D] font-semibold">ThakAlذكا</span> serves diverse sectors across the <span className="text-[#D7BC6D] font-semibold">UAE</span>, providing specialized regulatory compliance solutions tailored <span className="text-[#D7BC6D] font-semibold">to each industry's unique requirements.</span>
+            </p>
+            <div className="grid grid-cols-2 lg:grid-cols-5 gap-6 mx-auto mt-16">
+              <div className="bg-gradient-to-br from-[#D7BC6D]/10 to-[#CBA344]/10 rounded-2xl p-4 border border-[#D7BC6D]/30 hover:scale-105 hover:border-[#D7BC6D]/50 transition-all duration-300">
+                <img src="/assets/industry1.png" alt="Real Estate UAE" className="rounded-xl w-full shadow-lg" />
+              </div>
+              <div className="bg-gradient-to-br from-[#D7BC6D]/10 to-[#CBA344]/10 rounded-2xl p-4 border border-[#D7BC6D]/30 hover:scale-105 hover:border-[#D7BC6D]/50 transition-all duration-300">
+                <img src="/assets/industry2.png" alt="Financial Services UAE" className="rounded-xl w-full shadow-lg" />
+              </div>
+              <div className="bg-gradient-to-br from-[#D7BC6D]/10 to-[#CBA344]/10 rounded-2xl p-4 border border-[#D7BC6D]/30 hover:scale-105 hover:border-[#D7BC6D]/50 transition-all duration-300">
+                <img src="/assets/industry3.png" alt="SMEs UAE" className="rounded-xl w-full shadow-lg" />
+              </div>
+              <div className="bg-gradient-to-br from-[#D7BC6D]/10 to-[#CBA344]/10 rounded-2xl p-4 border border-[#D7BC6D]/30 hover:scale-105 hover:border-[#D7BC6D]/50 transition-all duration-300">
+                <img src="/assets/industry4.png" alt="Technology UAE" className="rounded-xl w-full shadow-lg" />
+              </div>
+              <div className="bg-gradient-to-br from-[#D7BC6D]/10 to-[#CBA344]/10 rounded-2xl p-4 border border-[#D7BC6D]/30 hover:scale-105 hover:border-[#D7BC6D]/50 transition-all duration-300">
+                <img src="/assets/industry5.png" alt="Healthcare UAE" className="rounded-xl w-full shadow-lg" />
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto mt-12">
+              <div className="p-6 text-center bg-white/5 backdrop-blur-sm rounded-2xl border border-[#D7BC6D]/20 hover:bg-white/10 hover:scale-105 transition-all duration-300">
+                <h3 className="text-lg font-bold text-[#D7BC6D]">Financial Services</h3>
+                <p className="mt-2 text-sm text-gray-300 leading-relaxed">Banking, insurance, and investment compliance</p>
+              </div>
+              <div className="p-6 text-center bg-white/5 backdrop-blur-sm rounded-2xl border border-[#D7BC6D]/20 hover:bg-white/10 hover:scale-105 transition-all duration-300">
+                <h3 className="text-lg font-bold text-[#D7BC6D]">Construction & Real Estate</h3>
+                <p className="mt-2 text-sm text-gray-300 leading-relaxed">Building codes and property regulations</p>
+              </div>
+              <div className="p-6 text-center bg-white/5 backdrop-blur-sm rounded-2xl border border-[#D7BC6D]/20 hover:bg-white/10 hover:scale-105 transition-all duration-300">
+                <h3 className="text-lg font-bold text-[#D7BC6D]">SMEs</h3>
+                <p className="mt-2 text-sm text-gray-300 leading-relaxed">Small to medium size businesses</p>
+              </div>
+              <div className="p-6 text-center bg-white/5 backdrop-blur-sm rounded-2xl border border-[#D7BC6D]/20 hover:bg-white/10 hover:scale-105 transition-all duration-300">
+                <h3 className="text-lg font-bold text-[#D7BC6D]">Technology</h3>
+                <p className="mt-2 text-sm text-gray-300 leading-relaxed">Data protection and cybersecurity requirements</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* CTA Section */}
+      <div className="text-center mb-40 mt-32 mx-auto max-w-7xl px-6 lg:px-12">
+        <h4 className="text-4xl font-bold tracking-tight text-balance text-[#D7BC6D] sm:text-5xl lg:text-6xl mt-20 leading-tight">
+          <span className="text-white">Ready to Transform Your</span> <span className="drop-shadow-[0px_0px_39px_rgba(215,188,109,0.9)]">Compliance Process</span>
+        </h4>
+        <p className="mt-8 text-base font-medium text-pretty text-white sm:text-lg lg:text-xl leading-relaxed max-w-4xl mx-auto">
+          A revolutionary approach to navigating the complex <span className="text-[#D7BC6D]">UAE regulatory landscape</span>, powered by <span className="text-[#D7BC6D]">advanced AI and semantic technology.</span>
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 mt-16 gap-6">
+          <div className="bg-gradient-to-br from-[#D7BC6D]/10 to-[#CBA344]/10 backdrop-blur-sm border border-[#D7BC6D]/30 rounded-3xl p-8 hover:scale-105 hover:border-[#D7BC6D]/50 hover:bg-gradient-to-br hover:from-[#D7BC6D]/20 hover:to-[#CBA344]/20 transition-all duration-300 shadow-xl">
+            <h3 className="text-2xl font-bold text-[#D7BC6D] mb-3">Free Trial</h3>
+            <p className="mt-2 text-gray-300 text-lg leading-relaxed">Try<span className="text-[#D7BC6D] font-semibold"> ThakAlذكا</span> risk-free for 30 days</p>
+          </div>
+          <div className="bg-gradient-to-br from-[#D7BC6D]/10 to-[#CBA344]/10 backdrop-blur-sm border border-[#D7BC6D]/30 rounded-3xl p-8 hover:scale-105 hover:border-[#D7BC6D]/50 hover:bg-gradient-to-br hover:from-[#D7BC6D]/20 hover:to-[#CBA344]/20 transition-all duration-300 shadow-xl">
+            <h3 className="text-2xl font-bold text-[#D7BC6D] mb-3">Expert Support</h3>
+            <p className="mt-2 text-gray-300 text-lg leading-relaxed">Dedicated onboarding and training</p>
+          </div>
+          <div className="bg-gradient-to-br from-[#D7BC6D]/10 to-[#CBA344]/10 backdrop-blur-sm border border-[#D7BC6D]/30 rounded-3xl p-8 hover:scale-105 hover:border-[#D7BC6D]/50 hover:bg-gradient-to-br hover:from-[#D7BC6D]/20 hover:to-[#CBA344]/20 transition-all duration-300 shadow-xl">
+            <h3 className="text-2xl font-bold text-[#D7BC6D] mb-3">Instant Setup</h3>
+            <p className="mt-2 text-gray-300 text-lg leading-relaxed">Get started in under 10 minutes</p>
+          </div>
+        </div>
+        <div className="mt-12 flex items-center justify-center gap-x-6">
+          <Link href="/contact" className="rounded-2xl bg-gradient-to-r from-[#D7BC6D] to-[#CBA344] px-10 py-5 text-lg font-semibold text-white shadow-2xl hover:scale-105 hover:shadow-[0px_0px_40px_rgba(215,188,109,0.6)] transition-all duration-300">Schedule Demo</Link>
+        </div>
+      </div>
+    </div>
+  );
+}
