@@ -163,7 +163,7 @@ export default function CreateBlogPage() {
   };
 
   const statusOptions = [
-    { value: 0, label: 'Save to Drafts', description: 'Save as draft for later editing' },
+    // { value: 0, label: 'Save to Drafts', description: 'Save as draft for later editing' },
     { value: 3, label: 'Publish', description: 'Publish immediately' },
   ];
 

@@ -47,32 +47,17 @@ export default function NewsArticle() {
   useEffect(() => {
     const loadBlog = async () => {
       try {
-        // First, get the blog list to find the blog ID by slug
-        const listResponse = await axios.get<any>(`${API_URL}/blogs`, {
-          params: {
-            search: slug,
-            per_page: 100,
-          },
-        });
+        // Fetch blog directly by slug using the new endpoint
+        const blogResponse = await axios.get<BlogResponse>(`${API_URL}/blogs/slug/${slug}`);
+        const blogData = blogResponse.data.data;
+        setBlog(blogData);
 
-        // Find blog with matching slug
-        const foundBlog = listResponse.data.data.items.find((b: any) => b.slug === slug);
-
-        if (foundBlog) {
-          // Now fetch the full blog details using the blog_id
-          const blogResponse = await axios.get(`${API_URL}/blogs/${foundBlog.id}`);
-          const blogData = blogResponse.data.data;
-          setBlog(blogData);
-
-          // Fetch category
-          try {
-            const catResponse = await axios.get(`${API_URL}/blogs/categories/${blogData.category_id}`);
-            setCategory(catResponse.data.data);
-          } catch (catError) {
-            console.error('Error loading category:', catError);
-          }
-        } else {
-          setError('Article not found');
+        // Fetch category
+        try {
+          const catResponse = await axios.get(`${API_URL}/blogs/categories/${blogData.category_id}`);
+          setCategory(catResponse.data.data);
+        } catch (catError) {
+          console.error('Error loading category:', catError);
         }
       } catch (err) {
         console.error('Error loading blog:', err);
