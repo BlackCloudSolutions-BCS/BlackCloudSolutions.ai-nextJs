@@ -304,7 +304,7 @@ export default function EditBlogPage() {
           </div>
 
           {/* Featured Image */}
-          <div>
+          {/* <div>
             <label htmlFor="featured_image" className="block text-sm font-medium text-gray-300 mb-2">
               Featured Image URL
             </label>
@@ -320,7 +320,7 @@ export default function EditBlogPage() {
               <p className="text-red-400 text-sm mt-1">{errors.featured_image.message}</p>
             )}
             <p className="text-gray-500 text-sm mt-1">Optional: Enter a URL for the blog's featured image</p>
-          </div>
+          </div> */}
 
           {/* Content */}
           <div>

@@ -180,9 +180,13 @@ export default function News() {
                       </span>
                     </div>
 
-                    <h3 className="text-xl font-bold text-white mb-4 leading-tight">
+                    <h3 className="text-xl font-bold text-white mb-2 leading-tight">
                       {blog.title}
                     </h3>
+
+                    <p className="text-xs text-gray-400 mb-4 italic">
+                      Written by {blog.author_name}
+                    </p>
 
                     <p className="text-sm text-gray-300 mb-6 leading-relaxed">{blog.summary}</p>
 
