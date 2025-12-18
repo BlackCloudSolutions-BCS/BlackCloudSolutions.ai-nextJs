@@ -1,25 +1,14 @@
 import Link from 'next/link';
+import VideoBackground from '@/components/VideoBackground';
 
 export default function Home() {
   return (
     <div>
       {/* Hero Section */}
       <section className="relative w-full min-h-screen pb-32">
-        <div className="absolute inset-0 w-full h-screen overflow-hidden">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover"
-          >
-            <source src="/assets/landing.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        </div>
+        <VideoBackground />
 
-        <div className="relative isolate px-6 pt-14 lg:px-12">
+        <div className="relative isolate px-6 pt-14 lg:px-12 z-20">
           <div className="mx-auto max-w-6xl py-32 sm:py-48 lg:pt-50 lg:pb-32">
             <div className="hidden sm:mb-8 sm:flex sm:justify-center">
               <div className="relative rounded-full px-4 py-2 text-sm text-white bg-[#D7BC6D]/10 backdrop-blur-sm border border-[#D7BC6D]/30 hover:bg-[#D7BC6D]/20 transition-all duration-300">

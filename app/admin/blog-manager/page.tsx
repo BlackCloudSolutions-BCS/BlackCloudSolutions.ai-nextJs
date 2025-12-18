@@ -67,6 +67,11 @@ export default function BlogManagerPage() {
   const [totalBlogs, setTotalBlogs] = useState(0);
   const blogsPerPage = 10;
 
+  // Filter states for blogs
+  const [searchTerm, setSearchTerm] = useState('');
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
+  const [selectedCategoryFilter, setSelectedCategoryFilter] = useState<string>('');
+
   // Categories state
   const [categories, setCategories] = useState<Category[]>([]);
   const [isLoadingCategories, setIsLoadingCategories] = useState(true);
@@ -81,6 +86,36 @@ export default function BlogManagerPage() {
   const [categoryName, setCategoryName] = useState('');
   const [categoryDescription, setCategoryDescription] = useState('');
   const [isSubmittingCategory, setIsSubmittingCategory] = useState(false);
+
+  // Debounce search term to avoid firing requests on every keystroke
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm);
+    }, 300); // 300ms delay
+
+    return () => clearTimeout(timer);
+  }, [searchTerm]);
+
+  // Fetch categories for filter dropdown (runs once on mount)
+  useEffect(() => {
+    const fetchCategoriesForFilter = async () => {
+      try {
+        const response = await axiosInstance.get<CategoriesResponse>('/blogs/categories', {
+          params: {
+            page: 1,
+            per_page: 100, // Get all categories for the filter dropdown
+          },
+        });
+        setCategories(response.data.data.items);
+      } catch (error: any) {
+        console.error('Error fetching categories for filter:', error);
+      }
+    };
+
+    if (auth?.clientUser?.token) {
+      fetchCategoriesForFilter();
+    }
+  }, [auth?.clientUser?.token, axiosInstance]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -106,31 +141,57 @@ export default function BlogManagerPage() {
         return;
       }
 
+      // Create AbortController to cancel pending requests
+      const abortController = new AbortController();
+
       // Normal navigation with valid auth, fetch data based on active section
       if (activeSection === 'blogs') {
-        fetchBlogs();
+        fetchBlogs(abortController.signal);
       } else if (activeSection === 'categories') {
         fetchCategories();
       }
-    }
-  }, [auth, router, activeSection, currentBlogsPage, currentCategoriesPage]);
 
-  const fetchBlogs = async () => {
+      // Cleanup: abort pending requests when dependencies change
+      return () => {
+        abortController.abort();
+      };
+    }
+  }, [auth, router, activeSection, currentBlogsPage, currentCategoriesPage, debouncedSearchTerm, selectedCategoryFilter]);
+
+  const fetchBlogs = async (signal?: AbortSignal) => {
     try {
       setIsLoadingBlogs(true);
+
+      // Build query parameters
+      const params: any = {
+        page: currentBlogsPage,
+        per_page: blogsPerPage,
+      };
+
+      // Add search parameter if search term exists
+      if (debouncedSearchTerm.trim()) {
+        params.search = debouncedSearchTerm.trim();
+      }
+
+      // Add category filter if selected
+      if (selectedCategoryFilter) {
+        params.category_id = selectedCategoryFilter;
+      }
+
       const response = await axiosInstance.get<BlogResponse>('/blogs', {
-        params: {
-          page: currentBlogsPage,
-          per_page: blogsPerPage,
-        },
+        params,
+        signal // Pass abort signal to cancel request
       });
 
       setBlogs(response.data.data.items);
       setTotalBlogsPages(response.data.data.total_pages);
       setTotalBlogs(response.data.data.total);
     } catch (error: any) {
-      toast.error('Failed to load blogs');
-      console.error('Error fetching blogs:', error);
+      // Don't show error if request was cancelled
+      if (error.name !== 'CanceledError' && error.name !== 'AbortError') {
+        toast.error('Failed to load blogs');
+        console.error('Error fetching blogs:', error);
+      }
     } finally {
       setIsLoadingBlogs(false);
     }
@@ -229,7 +290,7 @@ export default function BlogManagerPage() {
   };
 
   const handleDelete = async (blogId: string) => {
-    if (confirm('Are you sure you want to delete this blog? This action cannot be undone .')) {
+    if (confirm('Are you sure you want to delete this blog? This action cannot be undone.')) {
       try {
         await axiosInstance.delete(`/blogs/${blogId}`);
         toast.success('Blog deleted successfully!');
@@ -243,6 +304,23 @@ export default function BlogManagerPage() {
 
   const handleCreateNew = () => {
     router.push('/admin/blog-manager/create');
+  };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+    setCurrentBlogsPage(1); // Reset to first page when searching
+  };
+
+  const handleCategoryFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedCategoryFilter(e.target.value);
+    setCurrentBlogsPage(1); // Reset to first page when filtering
+  };
+
+  const clearFilters = () => {
+    setSearchTerm('');
+    setDebouncedSearchTerm(''); // Clear debounced search immediately
+    setSelectedCategoryFilter('');
+    setCurrentBlogsPage(1);
   };
 
   const getStatusLabel = (status: number) => {
@@ -335,6 +413,80 @@ export default function BlogManagerPage() {
           {activeSection === 'blogs' ? (
             // BLOGS SECTION
             <>
+              {/* Search and Filter Bar */}
+              <div className="mb-6 space-y-4">
+                <div className="flex flex-col md:flex-row gap-4">
+                  {/* Search Input */}
+                  <div className="flex-1">
+                    <div className="relative">
+                      <input
+                        type="text"
+                        value={searchTerm}
+                        onChange={handleSearchChange}
+                        placeholder="Search blogs by title, content, or summary..."
+                        className="w-full px-4 py-3 pl-10 bg-gray-900 border border-gray-800 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#D7BC6D] focus:border-transparent transition-all"
+                      />
+                      <svg
+                        className="absolute left-3 top-3.5 h-5 w-5 text-gray-500"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Category Filter */}
+                  <div className="md:w-64">
+                    <select
+                      value={selectedCategoryFilter}
+                      onChange={handleCategoryFilterChange}
+                      className="w-full px-4 py-3 bg-gray-900 border border-gray-800 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#D7BC6D] focus:border-transparent transition-all"
+                    >
+                      <option value="">All Categories</option>
+                      {categories.map((category) => (
+                        <option key={category.id} value={category.id}>
+                          {category.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Clear Filters Button */}
+                  {(searchTerm || selectedCategoryFilter) && (
+                    <button
+                      onClick={clearFilters}
+                      className="px-4 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-all whitespace-nowrap"
+                    >
+                      Clear Filters
+                    </button>
+                  )}
+                </div>
+
+                {/* Active Filters Display */}
+                {(searchTerm || selectedCategoryFilter) && (
+                  <div className="flex flex-wrap gap-2 items-center">
+                    <span className="text-sm text-gray-400">Active filters:</span>
+                    {searchTerm && (
+                      <span className="px-3 py-1 bg-[#D7BC6D]/20 text-[#D7BC6D] rounded-full text-sm border border-[#D7BC6D]/30">
+                        Search: "{searchTerm}"
+                      </span>
+                    )}
+                    {selectedCategoryFilter && (
+                      <span className="px-3 py-1 bg-[#D7BC6D]/20 text-[#D7BC6D] rounded-full text-sm border border-[#D7BC6D]/30">
+                        Category: {categories.find(c => c.id === selectedCategoryFilter)?.name}
+                      </span>
+                    )}
+                  </div>
+                )}
+              </div>
+
               {/* Action Bar */}
               <div className="flex justify-end items-center mb-6">
                 <button

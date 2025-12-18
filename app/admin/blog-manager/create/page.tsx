@@ -19,11 +19,6 @@ const blogSchema = z.object({
   content: z.string().min(1, 'Content is required'),
   summary: z.string().min(1, 'Summary is required').max(500, 'Summary must be less than 500 characters'),
   author_name: z.string().min(1, 'Author name is required'),
-  featured_image: z.string().url('Must be a valid URL').optional().or(z.literal('')),
-  status: z.union([z.string(), z.number()]).refine((val) => {
-    const num = Number(val);
-    return !isNaN(num) && num >= 0 && num <= 3;
-  }, { message: 'Status must be 0 or 3' }),
 });
 
 type BlogFormData = z.infer<typeof blogSchema>;
@@ -55,6 +50,8 @@ export default function CreateBlogPage() {
   const [isLoadingCategories, setIsLoadingCategories] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [contentValue, setContentValue] = useState('');
+  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const {
     register,
@@ -72,8 +69,6 @@ export default function CreateBlogPage() {
       author_name: auth?.clientUser?.user?.first_name && auth?.clientUser?.user?.last_name
         ? `${auth.clientUser.user.first_name} ${auth.clientUser.user.last_name}`
         : '',
-      featured_image: '',
-      status: 0, // Draft by default
     },
   });
 
@@ -81,7 +76,36 @@ export default function CreateBlogPage() {
     setValue('content', contentValue);
   }, [contentValue, setValue]);
 
-  const selectedStatus = watch('status');
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      // Validate file type
+      if (!file.type.startsWith('image/')) {
+        toast.error('Please select a valid image file');
+        return;
+      }
+
+      // Validate file size (max 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        toast.error('Image size must be less than 5MB');
+        return;
+      }
+
+      setSelectedImage(file);
+
+      // Create preview
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const removeImage = () => {
+    setSelectedImage(null);
+    setImagePreview(null);
+  };
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -132,26 +156,33 @@ export default function CreateBlogPage() {
 
   const onSubmit = async (data: BlogFormData) => {
     console.log('Form submitted with data:', data);
-    console.log('Status value:', data.status, 'Type:', typeof data.status);
 
     setIsSubmitting(true);
 
     try {
-      const payload = {
-        title: data.title,
-        category_id: data.category_id,
-        content: data.content,
-        summary: data.summary,
-        author_name: data.author_name,
-        featured_image: data.featured_image || undefined,
-        status: Number(data.status),
-      };
+      // Create FormData for multipart/form-data
+      const formData = new FormData();
+      formData.append('title', data.title);
+      formData.append('category_id', data.category_id);
+      formData.append('content', data.content);
+      formData.append('summary', data.summary);
+      formData.append('author_name', data.author_name);
+      formData.append('status', '3'); // Always publish
 
-      console.log('Sending payload to API:', payload);
+      // Add image if selected
+      if (selectedImage) {
+        formData.append('featured_image', selectedImage);
+      }
 
-      await axiosInstance.post('/blogs', payload);
+      console.log('Sending payload to API');
 
-      toast.success('Blog created successfully!');
+      await axiosInstance.post('/blogs', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      toast.success('Blog published successfully!');
       router.push('/admin/blog-manager');
     } catch (error: any) {
       const errorMessage = error?.response?.data?.message || 'Failed to create blog';
@@ -161,11 +192,6 @@ export default function CreateBlogPage() {
       setIsSubmitting(false);
     }
   };
-
-  const statusOptions = [
-    // { value: 0, label: 'Save to Drafts', description: 'Save as draft for later editing' },
-    { value: 3, label: 'Publish', description: 'Publish immediately' },
-  ];
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -273,24 +299,62 @@ export default function CreateBlogPage() {
             )}
           </div>
 
-          {/* Featured Image */}
-          {/* <div>
-            <label htmlFor="featured_image" className="block text-sm font-medium text-gray-300 mb-2">
-              Featured Image URL
+          {/* Featured Image Upload */}
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-2">
+              Featured Image
             </label>
-            <input
-              id="featured_image"
-              type="url"
-              {...register('featured_image')}
-              className="w-full px-4 py-3 bg-gray-900 border border-gray-800 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#D7BC6D] focus:border-transparent transition-all"
-              placeholder="https://example.com/image.jpg"
-              disabled={isSubmitting}
-            />
-            {errors.featured_image && (
-              <p className="text-red-400 text-sm mt-1">{errors.featured_image.message}</p>
+
+            {imagePreview ? (
+              <div className="relative">
+                <img
+                  src={imagePreview}
+                  alt="Preview"
+                  className="w-full h-64 object-cover rounded-lg border border-gray-800"
+                />
+                <button
+                  type="button"
+                  onClick={removeImage}
+                  disabled={isSubmitting}
+                  className="absolute top-2 right-2 px-3 py-2 bg-red-900/90 hover:bg-red-900 text-white rounded-lg transition-all disabled:opacity-50"
+                >
+                  Remove
+                </button>
+              </div>
+            ) : (
+              <div className="border-2 border-dashed border-gray-800 rounded-lg p-8 text-center hover:border-[#D7BC6D] transition-all">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  disabled={isSubmitting}
+                  className="hidden"
+                  id="image-upload"
+                />
+                <label
+                  htmlFor="image-upload"
+                  className="cursor-pointer flex flex-col items-center"
+                >
+                  <svg
+                    className="w-12 h-12 text-gray-600 mb-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    />
+                  </svg>
+                  <span className="text-gray-400 text-sm">Click to upload an image</span>
+                  <span className="text-gray-500 text-xs mt-1">PNG, JPG, GIF up to 5MB</span>
+                </label>
+              </div>
             )}
-            <p className="text-gray-500 text-sm mt-1">Optional: Enter a URL for the blog's featured image</p>
-          </div> */}
+            <p className="text-gray-500 text-sm mt-2">Optional: Upload a featured image for your blog post</p>
+          </div>
 
           {/* Content */}
           <div>
@@ -313,59 +377,6 @@ export default function CreateBlogPage() {
             </p>
           </div>
 
-          {/* Status */}
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-3">
-              Status <span className="text-red-400">*</span>
-            </label>
-            <div className="grid grid-cols-2 gap-4">
-              {statusOptions.map((option) => (
-                <label
-                  key={option.value}
-                  className={`relative flex cursor-pointer rounded-lg border p-4 transition-all ${
-                    Number(selectedStatus) === option.value
-                      ? 'border-[#D7BC6D] bg-[#D7BC6D]/10'
-                      : 'border-gray-800 bg-gray-900 hover:border-gray-700'
-                  }`}
-                >
-                  <input
-                    type="radio"
-                    {...register('status')}
-                    value={option.value}
-                    className="sr-only"
-                    disabled={isSubmitting}
-                  />
-                  <div className="flex flex-1">
-                    <div className="flex flex-col">
-                      <span
-                        className={`block text-sm font-medium ${
-                          Number(selectedStatus) === option.value ? 'text-[#D7BC6D]' : 'text-white'
-                        }`}
-                      >
-                        {option.label}
-                      </span>
-                      <span className="mt-1 text-xs text-gray-400">{option.description}</span>
-                    </div>
-                  </div>
-                  {Number(selectedStatus) === option.value && (
-                    <div className="text-[#D7BC6D]">
-                      <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path
-                          fillRule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                  )}
-                </label>
-              ))}
-            </div>
-            {errors.status && (
-              <p className="text-red-400 text-sm mt-1">{errors.status.message}</p>
-            )}
-          </div>
-
           {/* Submit Buttons */}
           <div className="flex gap-4 pt-4 border-t border-gray-800">
             <button
@@ -381,7 +392,7 @@ export default function CreateBlogPage() {
               disabled={isSubmitting}
               className="flex-1 px-6 py-3 bg-[#D7BC6D] hover:bg-[#CBA344] text-black font-semibold rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isSubmitting ? 'Creating Blog...' : 'Create Blog'}
+              {isSubmitting ? 'Publishing...' : 'Publish Blog'}
             </button>
           </div>
         </form>

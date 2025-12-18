@@ -177,21 +177,25 @@ export default function NewsArticle() {
   return (
     <div className="min-h-screen">
       {/* Hero Section with Featured Image */}
-      {blog.featured_image ? (
-        <section className="relative w-full h-[60vh] min-h-[400px]">
+      {blog.featured_image && blog.featured_image.trim() !== '' ? (
+        <section className="relative w-full h-[70vh] min-h-[500px]">
           <img
             src={blog.featured_image}
             alt={blog.title}
             className="absolute inset-0 w-full h-full object-cover"
+            onError={(e) => {
+              console.error('Failed to load featured image:', blog.featured_image);
+              e.currentTarget.style.display = 'none';
+            }}
           />
-          <div className="absolute inset-0 bg-black bg-opacity-70"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/90"></div>
         </section>
       ) : (
         <div className="h-24"></div>
       )}
 
       {/* Article Content */}
-      <article className="relative isolate px-6 py-12 lg:px-12">
+      <article className={`relative isolate px-6 lg:px-12 ${blog.featured_image && blog.featured_image.trim() !== '' ? '-mt-[40vh]' : 'py-12'}`}>
         <div className="mx-auto max-w-4xl">
           {/* Back Button */}
           <Link
