@@ -19,15 +19,28 @@ function VideoBackground() {
         }
       };
 
-      // Try to play when loaded
+      // Try to play immediately if already loaded
       if (video.readyState >= 2) {
         playVideo();
       }
+
+      // Add event listener to play when video can play
+      const handleCanPlay = () => {
+        console.log('Video can play - attempting to play');
+        playVideo();
+      };
+
+      video.addEventListener('canplay', handleCanPlay);
+
+      // Cleanup
+      return () => {
+        video.removeEventListener('canplay', handleCanPlay);
+      };
     }
   }, []);
 
   return (
-    <div className="absolute inset-0 w-full h-screen overflow-hidden" style={{ zIndex: 0 }}>
+    <div className="absolute inset-0 w-full h-screen overflow-hidden z-0">
       <video
         ref={videoRef}
         autoPlay
@@ -36,7 +49,6 @@ function VideoBackground() {
         playsInline
         preload="auto"
         className="absolute inset-0 w-full h-full object-cover"
-        style={{ zIndex: 0, display: 'block' }}
         onLoadStart={() => console.log('Video load started')}
         onLoadedMetadata={() => console.log('Video metadata loaded')}
         onLoadedData={() => console.log('Video data loaded')}
@@ -45,7 +57,7 @@ function VideoBackground() {
         onError={(e) => console.error('Video error event:', e)}
         src="/assets/landing.mp4"
       />
-      <div className="absolute inset-0 bg-black bg-opacity-50" style={{ zIndex: 10 }}></div>
+      <div className="absolute inset-0 bg-black/50"></div>
     </div>
   );
 }
