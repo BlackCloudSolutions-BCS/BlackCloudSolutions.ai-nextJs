@@ -56,6 +56,54 @@ export const homeTranslations = {
     industries: {
       title: 'Industries We Serve',
       description: 'ThakAlذكا serves diverse sectors across the UAE, providing specialized regulatory compliance solutions tailored to each industry\'s unique requirements.',
+      sectors: {
+        financial: {
+          title: 'Financial Services',
+          description: 'Banking, insurance, and investment compliance',
+        },
+        realEstate: {
+          title: 'Construction & Real Estate',
+          description: 'Building codes and property regulations',
+        },
+        smes: {
+          title: 'SMEs',
+          description: 'Small to medium size businesses',
+        },
+        technology: {
+          title: 'Technology',
+          description: 'Data protection and cybersecurity requirements',
+        },
+      },
+    },
+    cta: {
+      title: {
+        part1: 'Ready to Transform Your',
+        part2: 'Compliance Process',
+      },
+      subtitle: {
+        part1: 'A revolutionary approach to navigating the complex',
+        highlight1: 'UAE regulatory landscape',
+        part2: ', powered by',
+        highlight2: 'advanced AI and semantic technology.',
+      },
+      benefits: {
+        trial: {
+          title: 'Free Trial',
+          description: {
+            part1: 'Try',
+            part2: 'risk-free for 30 days',
+          },
+        },
+        support: {
+          title: 'Expert Support',
+          description: 'Dedicated onboarding and training',
+        },
+        setup: {
+          title: 'Instant Setup',
+          description: 'Get started in under 10 minutes',
+        },
+      },
+      button: 'Schedule Demo',
     },
   },
   ar: {
@@ -115,6 +163,54 @@ export const homeTranslations = {
     industries: {
       title: 'الصناعات التي نخدمها',
       description: 'تخدم ذكا ThakAl قطاعات متنوعة في جميع أنحاء الإمارات، وتوفر حلول امتثال تنظيمية متخصصة مصممة خصيصاً لمتطلبات كل صناعة الفريدة.',
+      sectors: {
+        financial: {
+          title: 'الخدمات المالية',
+          description: 'الامتثال المصرفي والتأمين والاستثمار',
+        },
+        realEstate: {
+          title: 'البناء والعقارات',
+          description: 'قوانين البناء وأنظمة الملكية',
+        },
+        smes: {
+          title: 'الشركات الصغيرة والمتوسطة',
+          description: 'الشركات الصغيرة إلى المتوسطة الحجم',
+        },
+        technology: {
+          title: 'التكنولوجيا',
+          description: 'حماية البيانات ومتطلبات الأمن السيبراني',
+        },
+      },
+    },
+    cta: {
+      title: {
+        part1: 'هل أنت مستعد لتحويل',
+        part2: 'عملية الامتثال الخاصة بك',
+      },
+      subtitle: {
+        part1: 'نهج ثوري للتنقل في',
+        highlight1: 'المشهد التنظيمي المعقد للإمارات',
+        part2: '، مدعوم بـ',
+        highlight2: 'الذكاء الاصطناعي المتقدم والتكنولوجيا الدلالية.',
+      },
+      benefits: {
+        trial: {
+          title: 'تجربة مجانية',
+          description: {
+            part1: 'جرب',
+            part2: 'بدون مخاطر لمدة 30 يوماً',
+          },
+        },
+        support: {
+          title: 'دعم الخبراء',
+          description: 'تأهيل وتدريب مخصص',
+        },
+        setup: {
+          title: 'إعداد فوري',
+          description: 'ابدأ في أقل من 10 دقائق',
+        },
+      },
+      button: 'جدولة عرض توضيحي',
     },
   },
 };

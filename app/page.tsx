@@ -168,20 +168,20 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto mt-12">
               <div className="p-6 text-center bg-white/5 backdrop-blur-sm rounded-2xl border border-[#D7BC6D]/20 hover:bg-white/10 hover:scale-105 transition-all duration-300">
-                <h3 className="text-lg font-bold text-[#D7BC6D]">Financial Services</h3>
-                <p className="mt-2 text-sm text-gray-300 leading-relaxed">Banking, insurance, and investment compliance</p>
+                <h3 className={`text-lg font-bold text-[#D7BC6D] ${currentLanguage === 'ar' ? 'arabic-text' : ''}`}>{t.industries.sectors.financial.title}</h3>
+                <p className={`mt-2 text-sm text-gray-300 leading-relaxed ${currentLanguage === 'ar' ? 'arabic-text' : ''}`}>{t.industries.sectors.financial.description}</p>
               </div>
               <div className="p-6 text-center bg-white/5 backdrop-blur-sm rounded-2xl border border-[#D7BC6D]/20 hover:bg-white/10 hover:scale-105 transition-all duration-300">
-                <h3 className="text-lg font-bold text-[#D7BC6D]">Construction & Real Estate</h3>
-                <p className="mt-2 text-sm text-gray-300 leading-relaxed">Building codes and property regulations</p>
+                <h3 className={`text-lg font-bold text-[#D7BC6D] ${currentLanguage === 'ar' ? 'arabic-text' : ''}`}>{t.industries.sectors.realEstate.title}</h3>
+                <p className={`mt-2 text-sm text-gray-300 leading-relaxed ${currentLanguage === 'ar' ? 'arabic-text' : ''}`}>{t.industries.sectors.realEstate.description}</p>
               </div>
               <div className="p-6 text-center bg-white/5 backdrop-blur-sm rounded-2xl border border-[#D7BC6D]/20 hover:bg-white/10 hover:scale-105 transition-all duration-300">
-                <h3 className="text-lg font-bold text-[#D7BC6D]">SMEs</h3>
-                <p className="mt-2 text-sm text-gray-300 leading-relaxed">Small to medium size businesses</p>
+                <h3 className={`text-lg font-bold text-[#D7BC6D] ${currentLanguage === 'ar' ? 'arabic-text' : ''}`}>{t.industries.sectors.smes.title}</h3>
+                <p className={`mt-2 text-sm text-gray-300 leading-relaxed ${currentLanguage === 'ar' ? 'arabic-text' : ''}`}>{t.industries.sectors.smes.description}</p>
               </div>
               <div className="p-6 text-center bg-white/5 backdrop-blur-sm rounded-2xl border border-[#D7BC6D]/20 hover:bg-white/10 hover:scale-105 transition-all duration-300">
-                <h3 className="text-lg font-bold text-[#D7BC6D]">Technology</h3>
-                <p className="mt-2 text-sm text-gray-300 leading-relaxed">Data protection and cybersecurity requirements</p>
+                <h3 className={`text-lg font-bold text-[#D7BC6D] ${currentLanguage === 'ar' ? 'arabic-text' : ''}`}>{t.industries.sectors.technology.title}</h3>
+                <p className={`mt-2 text-sm text-gray-300 leading-relaxed ${currentLanguage === 'ar' ? 'arabic-text' : ''}`}>{t.industries.sectors.technology.description}</p>
               </div>
             </div>
           </div>
@@ -189,29 +189,29 @@ export default function Home() {
       </div>
 
       {/* CTA Section */}
-      <div className="text-center mb-40 mt-32 mx-auto max-w-7xl px-6 lg:px-12">
-        <h4 className="text-4xl font-bold tracking-tight text-balance text-[#D7BC6D] sm:text-5xl lg:text-6xl mt-20 leading-tight">
-          <span className="text-white">Ready to Transform Your</span> <span className="drop-shadow-[0px_0px_39px_rgba(215,188,109,0.9)]">Compliance Process</span>
+      <div className={`text-center mb-40 mt-32 mx-auto max-w-7xl px-6 lg:px-12 ${currentLanguage === 'ar' ? 'rtl' : 'ltr'}`}>
+        <h4 className={`text-4xl font-bold tracking-tight text-balance text-[#D7BC6D] sm:text-5xl lg:text-6xl mt-20 leading-tight ${currentLanguage === 'ar' ? 'arabic-text' : ''}`}>
+          <span className="text-white">{t.cta.title.part1}</span> <span className="drop-shadow-[0px_0px_39px_rgba(215,188,109,0.9)]">{t.cta.title.part2}</span>
         </h4>
-        <p className="mt-8 text-base font-medium text-pretty text-white sm:text-lg lg:text-xl leading-relaxed max-w-4xl mx-auto">
-          A revolutionary approach to navigating the complex <span className="text-[#D7BC6D]">UAE regulatory landscape</span>, powered by <span className="text-[#D7BC6D]">advanced AI and semantic technology.</span>
+        <p className={`mt-8 text-base font-medium text-pretty text-white sm:text-lg lg:text-xl leading-relaxed max-w-4xl mx-auto ${currentLanguage === 'ar' ? 'arabic-text' : ''}`}>
+          {t.cta.subtitle.part1} <span className="text-[#D7BC6D]">{t.cta.subtitle.highlight1}</span>{t.cta.subtitle.part2} <span className="text-[#D7BC6D]">{t.cta.subtitle.highlight2}</span>
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 mt-16 gap-6">
           <div className="bg-gradient-to-br from-[#D7BC6D]/10 to-[#CBA344]/10 backdrop-blur-sm border border-[#D7BC6D]/30 rounded-3xl p-8 hover:scale-105 hover:border-[#D7BC6D]/50 hover:bg-gradient-to-br hover:from-[#D7BC6D]/20 hover:to-[#CBA344]/20 transition-all duration-300 shadow-xl">
-            <h3 className="text-2xl font-bold text-[#D7BC6D] mb-3">Free Trial</h3>
-            <p className="mt-2 text-gray-300 text-lg leading-relaxed">Try<span className="text-[#D7BC6D] font-semibold"> ThakAlذكا</span> risk-free for 30 days</p>
+            <h3 className={`text-2xl font-bold text-[#D7BC6D] mb-3 ${currentLanguage === 'ar' ? 'arabic-text' : ''}`}>{t.cta.benefits.trial.title}</h3>
+            <p className={`mt-2 text-gray-300 text-lg leading-relaxed ${currentLanguage === 'ar' ? 'arabic-text' : ''}`}>{t.cta.benefits.trial.description.part1}<span className="text-[#D7BC6D] font-semibold"> ThakAlذكا</span> {t.cta.benefits.trial.description.part2}</p>
           </div>
           <div className="bg-gradient-to-br from-[#D7BC6D]/10 to-[#CBA344]/10 backdrop-blur-sm border border-[#D7BC6D]/30 rounded-3xl p-8 hover:scale-105 hover:border-[#D7BC6D]/50 hover:bg-gradient-to-br hover:from-[#D7BC6D]/20 hover:to-[#CBA344]/20 transition-all duration-300 shadow-xl">
-            <h3 className="text-2xl font-bold text-[#D7BC6D] mb-3">Expert Support</h3>
-            <p className="mt-2 text-gray-300 text-lg leading-relaxed">Dedicated onboarding and training</p>
+            <h3 className={`text-2xl font-bold text-[#D7BC6D] mb-3 ${currentLanguage === 'ar' ? 'arabic-text' : ''}`}>{t.cta.benefits.support.title}</h3>
+            <p className={`mt-2 text-gray-300 text-lg leading-relaxed ${currentLanguage === 'ar' ? 'arabic-text' : ''}`}>{t.cta.benefits.support.description}</p>
           </div>
           <div className="bg-gradient-to-br from-[#D7BC6D]/10 to-[#CBA344]/10 backdrop-blur-sm border border-[#D7BC6D]/30 rounded-3xl p-8 hover:scale-105 hover:border-[#D7BC6D]/50 hover:bg-gradient-to-br hover:from-[#D7BC6D]/20 hover:to-[#CBA344]/20 transition-all duration-300 shadow-xl">
-            <h3 className="text-2xl font-bold text-[#D7BC6D] mb-3">Instant Setup</h3>
-            <p className="mt-2 text-gray-300 text-lg leading-relaxed">Get started in under 10 minutes</p>
+            <h3 className={`text-2xl font-bold text-[#D7BC6D] mb-3 ${currentLanguage === 'ar' ? 'arabic-text' : ''}`}>{t.cta.benefits.setup.title}</h3>
+            <p className={`mt-2 text-gray-300 text-lg leading-relaxed ${currentLanguage === 'ar' ? 'arabic-text' : ''}`}>{t.cta.benefits.setup.description}</p>
           </div>
         </div>
         <div className="mt-12 flex items-center justify-center gap-x-6">
-          <Link href="/contact" className="rounded-2xl bg-gradient-to-r from-[#D7BC6D] to-[#CBA344] px-10 py-5 text-lg font-semibold text-white shadow-2xl hover:scale-105 hover:shadow-[0px_0px_40px_rgba(215,188,109,0.6)] transition-all duration-300">Schedule Demo</Link>
+          <Link href="/contact" className={`rounded-2xl bg-gradient-to-r from-[#D7BC6D] to-[#CBA344] px-10 py-5 text-lg font-semibold text-white shadow-2xl hover:scale-105 hover:shadow-[0px_0px_40px_rgba(215,188,109,0.6)] transition-all duration-300 ${currentLanguage === 'ar' ? 'arabic-text' : ''}`}>{t.cta.button}</Link>
         </div>
       </div>
     </div>
