@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import LanguageToggle from './LanguageToggle';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -43,7 +44,8 @@ export default function Header() {
           <Link href="/contact" className={`text-sm font-semibold transition-colors duration-300 px-4 py-2 rounded-xl ${isActive('/contact') ? 'text-[#D7BC6D] bg-white/10 drop-shadow-[0px_0px_10px_rgba(215,188,109,0.5)]' : 'text-white hover:text-[#D7BC6D] hover:bg-white/5'}`}>Contact</Link>
         </div>
 
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4">
+          <LanguageToggle />
           <Link href="/app" className="rounded-2xl bg-gradient-to-r from-[#D7BC6D] to-[#CBA344] px-6 py-2.5 text-sm font-semibold text-white shadow-lg hover:scale-105 transition-all duration-300">
             Launch App
           </Link>
@@ -82,7 +84,10 @@ export default function Header() {
                   <Link href="/news" onClick={() => setMobileMenuOpen(false)} className={`block rounded-2xl px-4 py-3 text-base font-semibold backdrop-blur-sm border transition-all duration-300 ${isActive('/news') ? 'text-[#D7BC6D] bg-white/10 border-[#D7BC6D]/50 drop-shadow-[0px_0px_10px_rgba(215,188,109,0.5)]' : 'text-white bg-white/5 border-[#D7BC6D]/30 hover:bg-white/10 hover:text-[#D7BC6D] hover:border-[#D7BC6D]/50'}`}>News</Link>
                   <Link href="/about-us" onClick={() => setMobileMenuOpen(false)} className={`block rounded-2xl px-4 py-3 text-base font-semibold backdrop-blur-sm border transition-all duration-300 ${isActive('/about-us') ? 'text-[#D7BC6D] bg-white/10 border-[#D7BC6D]/50 drop-shadow-[0px_0px_10px_rgba(215,188,109,0.5)]' : 'text-white bg-white/5 border-[#D7BC6D]/30 hover:bg-white/10 hover:text-[#D7BC6D] hover:border-[#D7BC6D]/50'}`}>About Us</Link>
                   <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className={`block rounded-2xl px-4 py-3 text-base font-semibold backdrop-blur-sm border transition-all duration-300 ${isActive('/contact') ? 'text-[#D7BC6D] bg-white/10 border-[#D7BC6D]/50 drop-shadow-[0px_0px_10px_rgba(215,188,109,0.5)]' : 'text-white bg-white/5 border-[#D7BC6D]/30 hover:bg-white/10 hover:text-[#D7BC6D] hover:border-[#D7BC6D]/50'}`}>Contact</Link>
-                  <Link href="/app" onClick={() => setMobileMenuOpen(false)} className="block rounded-2xl px-4 py-3 text-base font-semibold bg-gradient-to-r from-[#D7BC6D] to-[#CBA344] text-white text-center mt-6 hover:scale-105 transition-all duration-300 shadow-lg">Launch App</Link>
+                  <div className="mt-6">
+                    <LanguageToggle />
+                  </div>
+                  <Link href="/app" onClick={() => setMobileMenuOpen(false)} className="block rounded-2xl px-4 py-3 text-base font-semibold bg-gradient-to-r from-[#D7BC6D] to-[#CBA344] text-white text-center hover:scale-105 transition-all duration-300 shadow-lg">Launch App</Link>
                 </div>
               </div>
             </div>
