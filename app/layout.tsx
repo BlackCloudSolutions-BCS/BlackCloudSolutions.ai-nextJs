@@ -4,8 +4,8 @@ import { Providers } from "./providers";
 import ConditionalLayout from "@/components/ConditionalLayout";
 
 export const metadata: Metadata = {
-  title: "ThakAI - AI-Powered Solutions",
-  description: "ThakAI provides cutting-edge AI solutions for businesses",
+  title: "ThakAlذكا - AI-Powered Solutions",
+  description: "ThakAlذكا provides cutting-edge AI solutions for businesses",
 };
 
 export default function RootLayout({
