@@ -17,7 +17,7 @@ export const homeTranslations = {
         description: 'Specialized Algorithms of UAE regulatory',
       },
       bilingual: {
-        greeting: 'مرحباً',
+        greeting: "مرحباً",
         title: 'Bilingual Understanding',
         description: 'Seamless Arabic and English legal content',
       },
@@ -37,19 +37,19 @@ export const homeTranslations = {
       features: {
         workspace: {
           title: 'Workspace',
-          description: ' - Domain and theme-specific workspace configurations for precise control of knowledge and contextual-awareness management, tailored to specific user and organizational needs.',
+          description: '- تكوينات مساحة عمل مخصصة للمجال والموضوع لتحكم دقيق في إدارة المعرفة والوعي السياقي، مخصصة لاحتياجات المستخدمين ومؤسساتهم.',
         },
         newsFeed: {
           title: 'Real-Time News Feed',
-          description: ' - A continuously updated stream of relevant regional legal and regulatory related news, keeping users informed of the latest developments across the UAE legal landscape.',
+          description: '- تدفق مستمر للأخبار القانونية والتنظيمية الإقليمية ذات الصلة، يظل على علم بأحدث التطورات في المشهد القانوني الإماراتي.',
         },
         documentDrafting: {
           title: 'Automated Document Drafting',
-          description: ' - Generate draft outlines for corporate policy documents, terms of service agreements, and contracts',
+          description: '- Generate draft outlines for corporate policy documents, terms of service agreements, and contracts',
         },
         complianceMonitor: {
           title: 'Compliance Monitor',
-          description: ' - Get instant alerts, risk insights, and tailored recommendations so you can close compliance gaps before they become liabilities.',
+          description: '- احصل على تنبيهات فورية، رؤى مخاطر، وطريقة توصية مخصصة لتسهيل سد الفجوات في الامتثال قبل أن تصبح التزامات.',
         },
       },
     },
@@ -108,73 +108,76 @@ export const homeTranslations = {
   },
   ar: {
     hero: {
-      badge: 'ذكاء قانوني مصمم خصيصاً',
+      badge: 'الذكاء القانوني المصمم بالغرض',
       readMore: 'اقرأ المزيد',
       title: {
         part1: 'مستقبل التكنولوجيا القانونية',
         part2: 'في الإمارات',
       },
-      subtitle: 'نهج ثوري للتنقل في المشهد التنظيمي المعقد للإمارات، مدعوم بالذكاء الاصطناعي المتقدم والتكنولوجيا الدلالية.',
+      subtitle: 'هجرة ثورية للتنقل في المشهد التنظيمي المعقد للإمارات، مدعومة من قبل الذكاء الاصطناعي المتقدم وتكنولوجيا الدلالية المتقدمة.',
       getStarted: 'ابدأ الآن',
       learnMore: 'اعرف المزيد',
     },
     features: {
       domainAI: {
-        title: 'ذكاء اصطناعي متخصص',
+        title: 'intelligence',
         description: 'خوارزميات متخصصة للأنظمة الإماراتية',
       },
       bilingual: {
         greeting: 'مرحباً',
         title: 'فهم ثنائي اللغة',
-        description: 'محتوى قانوني سلس بالعربية والإنجليزية',
+        description: 'محتوى قانوني متدفق بالعربية والإنجليزية',
       },
       semantic: {
-        title: 'دلالي بالتصميم',
+        title: 'دلالية بالتصميم',
         description: 'فهم دقيق للمفاهيم القانونية',
       },
     },
     mission: {
       title: 'مهمتنا',
-      description: 'منتجنا الأساسي، ذكا ThakAl، يستفيد من أحدث تقنيات الذكاء الاصطناعي التوليدي، وتقنيات الويب الدلالية، وقاعدة بيانات واسعة للمعرفة القانونية لتقديم أدوات شاملة للذكاء التنظيمي وإنشاء المستندات المصممة خصيصاً لسوق الإمارات. من خلال إنشاء منصة ذكية وسهلة الوصول تزيل الغموض عن الإطار القانوني المعقد للإمارات، ندعم رؤية الدولة لتصبح مركزاً تجارياً عالمياً مع تعزيز سيادتها التكنولوجية',
+      description:
+        'productsنا الأساسية، ThakAl، تستند إلى أحدث تقنيات الذكاء الاصطناعي التوليدية، وطرق الويب الدلالية، وصفقات معارف قانونية شاملة (knowledge graph) لتوفير أدوات شاملة للذكاء التنظيمي وإنشاء المستندات مخصصة لسوق الإمارات. من خلال منصة ذكية وسهلة الوصول التي تُظهر المشهد القانوني المعقد في الإمارات وتُسهل فهادته، ن助力 الدولة تحقيق رؤية لتصبح مركزًا تجاريًا عالميًا وتعزيز سيادتها التقنية.',
     },
     product: {
       title: 'المنتج',
-      subtitle: 'ذكا ThakAl',
-      description: 'ذكا ThakAl هي منصتنا المتطورة للذكاء الاصطناعي القانوني والتنظيمي المصممة خصيصاً لمعالجة التحديات المعقدة للامتثال في الإمارات. من خلال الجمع بين الذكاء الاصطناعي الحديث المتقدم ومستودع بيانات فريد مصمم دلالياً ووثائق حية، أنشأنا حلاً يحول كيفية تفاعل المؤسسات مع الأطر التنظيمية وسير العمل القانوني.',
+      subtitle: 'ThakAl',
+      description:
+        'ThakAl هي منصة إلكترونية متطورة لدعم الذكاء الاصطناعي والهيكل التنظيمي في الإمارات، مصممة لمعالجة التحديات المعقدة المتعلقة بالامتثال. نحن ندمج بين الذكاء الاصطناعي الحديث المتقدم، ومستودع بيانات فريد تمّ بناؤه وفق منظور دلالي، ووثائقية حية، مما أنشأ حلاً يُحول كيفية تعامل المؤسسات مع الأطر التنظيمية وسلوك العمل القانوني.',
       features: {
         workspace: {
-          title: 'مساحة العمل',
-          description: ' - تكوينات مساحة عمل خاصة بالمجال والموضوع للتحكم الدقيق في إدارة المعرفة والوعي السياقي، مصممة خصيصاً لاحتياجات المستخدم والمؤسسة.',
+          title: 'Workspace',
+          description: '- تكوينات مساحة عمل مخصصة للمجال والموضوع لتحكم دقيق في إدارة المعرفة والوعي السياقي، مخصصة لاحتياجات المستخدمين ومؤسساتهم.',
         },
         newsFeed: {
-          title: 'موجز الأخبار في الوقت الفعلي',
-          description: ' - تدفق محدث باستمرار للأخبار القانونية والتنظيمية الإقليمية ذات الصلة، مما يبقي المستخدمين على اطلاع بأحدث التطورات في المشهد القانوني للإمارات.',
+          title: 'Mوجز الأخبار في الوقت الفعلي',
+          description: '- تدفق مستمر للأخبار القانونية والتنظيمية الإقليمية ذات الصلة، يظل على علم بأحدث التطورات في المشهد القانوني الإماراتي.',
         },
         documentDrafting: {
           title: 'صياغة المستندات الآلية',
-          description: ' - إنشاء مسودات لوثائق سياسات الشركات واتفاقيات شروط الخدمة والعقود',
+          description: '- إنشاء مسودات لوثائق سياسات الشركات واتفاقات شروط الخدمة والعقود',
         },
         complianceMonitor: {
           title: 'مراقب الامتثال',
-          description: ' - احصل على تنبيهات فورية ورؤى المخاطر وتوصيات مخصصة حتى تتمكن من سد فجوات الامتثال قبل أن تصبح التزامات.',
+          description: '- احصل على تنبيهات فورية، رؤى مخاطر، وطريقة توصية مخصصة لتسهيل سد الفجوات في الامتثال قبل أن تصبح التزامات.',
         },
       },
     },
     industries: {
       title: 'الصناعات التي نخدمها',
-      description: 'تخدم ذكا ThakAl قطاعات متنوعة في جميع أنحاء الإمارات، وتوفر حلول امتثال تنظيمية متخصصة مصممة خصيصاً لمتطلبات كل صناعة الفريدة.',
+      description:
+        'تُخدم ThakAl قطاعات متدّدة في الإمارات، وتُقدّم حلول تحمل المسؤولية التنظيمية متخصصة لكل قطاع، مصممة لتلبية متطلباته الفريدة.',
       sectors: {
         financial: {
           title: 'الخدمات المالية',
-          description: 'الامتثال المصرفي والتأمين والاستثمار',
+          description: 'بنك، تأمين، واستثمار الامتثال',
         },
         realEstate: {
           title: 'البناء والعقارات',
-          description: 'قوانين البناء وأنظمة الملكية',
+          description: 'قانون البناء والأنظمة المرتبطة بالملكيات',
         },
         smes: {
           title: 'الشركات الصغيرة والمتوسطة',
-          description: 'الشركات الصغيرة إلى المتوسطة الحجم',
+          description: 'الشركات الصغيرة والمتوسطة',
         },
         technology: {
           title: 'التكنولوجيا',
@@ -184,21 +187,21 @@ export const homeTranslations = {
     },
     cta: {
       title: {
-        part1: 'هل أنت مستعد لتحويل',
+        part1: 'هل أنت جاهز لتحويل',
         part2: 'عملية الامتثال الخاصة بك',
       },
       subtitle: {
-        part1: 'نهج ثوري للتنقل في',
+        part1: 'هجرة ثورية للتنقل في',
         highlight1: 'المشهد التنظيمي المعقد للإمارات',
-        part2: '، مدعوم بـ',
-        highlight2: 'الذكاء الاصطناعي المتقدم والتكنولوجيا الدلالية.',
+        part2: ', مدعوم بـ',
+        highlight2: 'الذكاء الاصطناعي المتقدم وتكنولوجيا الدلالية المتقدمة.',
       },
       benefits: {
         trial: {
           title: 'تجربة مجانية',
           description: {
             part1: 'جرب',
-            part2: 'بدون مخاطر لمدة 30 يوماً',
+            part2: 'بدون مخاطر لمدة 30 يومًا',
           },
         },
         support: {
@@ -214,4 +217,3 @@ export const homeTranslations = {
     },
   },
 };
-
