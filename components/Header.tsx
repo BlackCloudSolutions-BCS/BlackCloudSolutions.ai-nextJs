@@ -15,9 +15,9 @@ export default function Header() {
       <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-12 bg-black/30 backdrop-blur-md border-b border-[#D7BC6D]/20">
         {/* Logo */}
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5 hover:scale-110 transition-transform duration-300">
+          <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">ThakAI</span>
-            <img src="/assets/logo-thakai.png" alt="ThakAI Logo" className="h-10 w-auto drop-shadow-[0px_0px_10px_rgba(215,188,109,0.3)]" />
+            <img src="/assets/logo-thakai.jpg" alt="ThakAI Logo" className="h-10 w-auto" />
           </Link>
         </div>
 
@@ -62,7 +62,7 @@ export default function Header() {
               <div className="flex items-center justify-between">
                 <Link href="/" className="-m-1.5 p-1.5">
                   <span className="sr-only">ThakAI</span>
-                  <img src="/assets/logo-thakai.png" alt="ThakAI Logo" className="h-8 w-auto" />
+                  <img src="/assets/logo-thakai.jpg" alt="ThakAI Logo" className="h-8 w-auto" />
                 </Link>
                 <button
                   type="button"
